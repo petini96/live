@@ -1,0 +1,15 @@
+POST http: http://localhost:8000/products
+Content-type: application/json
+
+{
+    "name": "My product",
+    "price": 100
+}
+
+mysql -uroot -p products
+create table products (id varchar(255), name varchar(255), price float);
+
+kafka-topics --bootstrap-server=localhost:9092 --topic=product --create
+kafka-console-producer --bootstrap-server=localhost:9092 --topic=products
+
+{"name": "My product KAFKA FF","price": 102.20}
